@@ -1,7 +1,7 @@
-<section id="inicio" #heroSection class="hero-section">
+<section id="inicio" #heroSection class="hero-section" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
   <!-- Glowing Background Parallax Orbs -->
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
+  <div #orb1 class="glow-orb orb-1"></div>
+  <div #orb2 class="glow-orb orb-2"></div>
 
   <div class="container hero-container">
     <div class="hero-content">
@@ -9,8 +9,8 @@
       <!-- Greeting Badge -->
       <div #heroBadge class="hero-badge-wrapper">
         <span class="badge-tag glow-pulse">
-          <span class="dot"></span>
-          👋 ¡Hola! Soy {{ profile.name }}
+          <app-icon name="code" [size]="14" color="#00F2FE"></app-icon>
+          ¡Hola! Soy {{ profile.name }}
         </span>
       </div>
 
@@ -24,7 +24,7 @@
       <div #heroRoles class="roles-chips">
         @for (role of profile.roles; track role) {
           <div class="role-chip">
-            <span class="chip-icon font-mono">⚡</span>
+            <app-icon name="check" [size]="14" color="#00F2FE"></app-icon>
             <span>{{ role }}</span>
           </div>
         }
@@ -72,7 +72,7 @@
 
     </div>
 
-    <!-- Tech Code Interactive Illustration Box -->
+    <!-- Tech Code Interactive Illustration Box with Mouse Parallax -->
     <div #heroGraphic class="hero-graphic-col">
       <div class="terminal-card glass-card">
         <div class="terminal-header">
@@ -85,9 +85,9 @@
         </div>
         <div class="terminal-body font-mono">
           <p><span class="keyword">const</span> <span class="variable">developer</span> = &#123;</p>
-          <p class="indent"><span class="key">nombre</span>: <span class="string">'Abel Aarón Orejón Eustaquio'</span>,</p>
+          <p class="indent"><span class="key">nombre</span>: <span class="string">'Abel Aaron Orejon Eustaquio'</span>,</p>
           <p class="indent"><span class="key">titulo</span>: <span class="string">'Ingeniero de Sistemas Computacionales'</span>,</p>
-          <p class="indent"><span class="key">ubicacion</span>: <span class="string">'Lima, Perú 🇵🇪'</span>,</p>
+          <p class="indent"><span class="key">ubicacion</span>: <span class="string">'Lima, Peru'</span>,</p>
           <p class="indent"><span class="key">stackBackend</span>: [<span class="string">'PHP'</span>, <span class="string">'Laravel'</span>, <span class="string">'C#'</span>, <span class="string">'.NET'</span>, <span class="string">'Node.js'</span>],</p>
           <p class="indent"><span class="key">stackFrontend</span>: [<span class="string">'Angular'</span>, <span class="string">'JavaScript'</span>, <span class="string">'Tailwind'</span>, <span class="string">'SCSS'</span>],</p>
           <p class="indent"><span class="key">databases</span>: [<span class="string">'MySQL'</span>, <span class="string">'PostgreSQL'</span>],</p>
@@ -96,20 +96,20 @@
           <div class="code-cursor"></div>
         </div>
 
-        <!-- Floating Skill Badges overlay -->
+        <!-- High-Contrast Floating Skill Badges overlay -->
         <div class="floating-badge badge-php animate-float">
-          <app-icon name="php" [size]="20" color="#777BB4"></app-icon>
-          <span>PHP MVC</span>
+          <app-icon name="php" [size]="22" color="#A78BFA"></app-icon>
+          <span class="badge-text font-mono">PHP MVC</span>
         </div>
 
-        <div class="floating-badge badge-angular animate-float" style="animation-delay: 2s;">
-          <app-icon name="angular" [size]="20" color="#DD0031"></app-icon>
-          <span>Angular</span>
+        <div class="floating-badge badge-angular animate-float" style="animation-delay: 1.5s;">
+          <app-icon name="angular" [size]="22" color="#FF2D55"></app-icon>
+          <span class="badge-text font-mono">Angular</span>
         </div>
 
-        <div class="floating-badge badge-mysql animate-float" style="animation-delay: 4s;">
-          <app-icon name="mysql" [size]="20" color="#4479A1"></app-icon>
-          <span>MySQL</span>
+        <div class="floating-badge badge-mysql animate-float" style="animation-delay: 3s;">
+          <app-icon name="mysql" [size]="22" color="#38BDF8"></app-icon>
+          <span class="badge-text font-mono">MySQL</span>
         </div>
       </div>
     </div>

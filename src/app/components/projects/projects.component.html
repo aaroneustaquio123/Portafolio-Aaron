@@ -117,7 +117,7 @@
           <ul class="modal-desc-list">
             @for (descPoint of selectedProject()!.description; track descPoint) {
               <li>
-                <span class="check-icon">✓</span>
+                <app-icon name="check" [size]="16" color="#00E676"></app-icon>
                 <span>{{ descPoint }}</span>
               </li>
             }
@@ -131,7 +131,7 @@
             <div class="features-grid">
               @for (feat of selectedProject()!.features; track feat) {
                 <div class="feature-chip">
-                  <span class="bullet">⚡</span>
+                  <app-icon name="check" [size]="14" color="#00F2FE"></app-icon>
                   <span>{{ feat }}</span>
                 </div>
               }

@@ -67,6 +67,49 @@ export class HeroComponent implements AfterViewInit {
     );
   }
 
+  onMouseMove(e: MouseEvent): void {
+    if (!this.heroGraphic?.nativeElement) return;
+    
+    const rect = this.heroSection.nativeElement.getBoundingClientRect();
+    const xPos = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPos = (e.clientY - rect.top) / rect.height - 0.5;
+
+    // Real-time 3D Tilt animation on mouse movement
+    gsap.to(this.heroGraphic.nativeElement, {
+      duration: 0.5,
+      rotateY: xPos * 14,
+      rotateX: -yPos * 14,
+      ease: 'power1.out',
+      transformPerspective: 1000
+    });
+
+    // Real-time subtle shift on floating badges
+    gsap.to('.floating-badge', {
+      duration: 0.4,
+      x: xPos * 25,
+      y: yPos * 25,
+      ease: 'power1.out'
+    });
+  }
+
+  onMouseLeave(): void {
+    if (!this.heroGraphic?.nativeElement) return;
+
+    gsap.to(this.heroGraphic.nativeElement, {
+      duration: 0.8,
+      rotateY: 0,
+      rotateX: 0,
+      ease: 'power2.out'
+    });
+
+    gsap.to('.floating-badge', {
+      duration: 0.8,
+      x: 0,
+      y: 0,
+      ease: 'power2.out'
+    });
+  }
+
   scrollToSection(id: string): void {
     const element = document.getElementById(id);
     if (element) {

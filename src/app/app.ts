@@ -29,5 +29,5 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './app.scss'
 })
 export class App {
-  title = 'Abel Aarón Orejón Eustaquio - Portafolio';
+  title = 'Abel Aaron Orejon Eustaquio - Portafolio';
 }

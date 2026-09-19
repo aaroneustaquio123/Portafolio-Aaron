@@ -160,17 +160,20 @@
 
 .terminal-card {
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-  background: rgba(12, 17, 28, 0.9);
+  background: rgba(12, 17, 28, 0.95);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: var(--radius-lg);
 
   .terminal-header {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     padding: 0.85rem 1.2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
     border-bottom: 1px solid var(--bg-card-border);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 
     .terminal-dots {
       display: flex;
@@ -218,29 +221,42 @@
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.9rem;
-  background: rgba(18, 24, 38, 0.9);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  background: #0E1626;
+  backdrop-filter: blur(16px);
   border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-heading);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 242, 254, 0.15);
+  z-index: 10;
+  transition: transform var(--transition-bounce);
+
+  .badge-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  }
 
   &.badge-php {
-    top: -15px;
-    right: 20px;
+    top: -18px;
+    left: 25px;
+    border: 1px solid rgba(167, 139, 250, 0.6);
   }
 
   &.badge-angular {
-    bottom: 25px;
-    left: -20px;
+    bottom: 45px;
+    left: -25px;
+    border: 1px solid rgba(255, 45, 85, 0.6);
   }
 
   &.badge-mysql {
-    bottom: -15px;
-    right: 30px;
+    bottom: -18px;
+    right: 25px;
+    border: 1px solid rgba(56, 189, 248, 0.6);
+  }
+
+  &:hover {
+    transform: scale(1.1) translateY(-3px);
   }
 }

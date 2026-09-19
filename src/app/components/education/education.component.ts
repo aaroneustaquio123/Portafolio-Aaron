@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioService, Education, Certification } from '../../services/portfolio.service';
 import { IconComponent } from '../icon/icon.component';
@@ -19,6 +19,8 @@ export class EducationComponent implements AfterViewInit {
   education: Education = this.portfolioService.education;
   certification: Certification = this.portfolioService.certification;
 
+  certModalOpen = signal(false);
+
   @ViewChild('eduSection') eduSection!: ElementRef<HTMLElement>;
 
   ngAfterViewInit(): void {
@@ -37,5 +39,13 @@ export class EducationComponent implements AfterViewInit {
         }
       }
     );
+  }
+
+  openCertModal(): void {
+    this.certModalOpen.set(true);
+  }
+
+  closeCertModal(): void {
+    this.certModalOpen.set(false);
   }
 }

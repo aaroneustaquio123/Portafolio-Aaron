@@ -67,7 +67,7 @@ export interface Certification {
 export class PortfolioService {
 
   readonly profile: ProfileInfo = {
-    name: 'Abel Aarón Orejón Eustaquio',
+    name: 'Abel Aaron Orejon Eustaquio',
     roles: [
       'Desarrollador Full Stack',
       'Ingeniero de Sistemas Computacionales',

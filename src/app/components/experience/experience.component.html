@@ -30,7 +30,8 @@
               <div class="role-group">
                 <h3 class="role-title text-gradient">{{ exp.role }}</h3>
                 <span class="company-name font-mono">
-                  ⚡ {{ exp.company }}
+                  <app-icon name="project" [size]="14" color="#00F2FE"></app-icon>
+                  {{ exp.company }}
                   @if (exp.companyType) {
                     <span class="company-type">({{ exp.companyType }})</span>
                   }
@@ -45,7 +46,7 @@
             <ul class="responsibilities-list">
               @for (item of exp.responsibilities; track item) {
                 <li>
-                  <span class="bullet-icon font-mono">▹</span>
+                  <app-icon name="check" [size]="14" color="#00F2FE"></app-icon>
                   <span>{{ item }}</span>
                 </li>
               }

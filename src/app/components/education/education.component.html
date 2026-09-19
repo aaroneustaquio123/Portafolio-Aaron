@@ -24,8 +24,14 @@
         <span class="institution-name font-mono text-gradient">{{ education.institution }}</span>
         
         <div class="meta-row">
-          <span class="period font-mono">📅 {{ education.period }}</span>
-          <span class="status-badge font-mono">🎓 {{ education.status }}</span>
+          <span class="period font-mono">
+            <app-icon name="project" [size]="16" color="#00F2FE"></app-icon>
+            {{ education.period }}
+          </span>
+          <span class="status-badge font-mono">
+            <app-icon name="check" [size]="14" color="#00E676"></app-icon>
+            {{ education.status }}
+          </span>
         </div>
 
         <p class="edu-desc">
@@ -39,23 +45,50 @@
         <div class="card-badge font-mono">CERTIFICACIÓN IDIOMA</div>
 
         <div class="card-icon-box">
-          <app-icon name="language" [size]="32" color="#FF2E93"></app-icon>
+          <app-icon name="api" [size]="32" color="#FF2E93"></app-icon>
         </div>
 
         <h3 class="edu-title">{{ certification.title }}</h3>
         <span class="institution-name font-mono text-accent-gradient">{{ certification.institution }}</span>
 
         <div class="meta-row">
-          <span class="period font-mono">🌍 Level {{ certification.level }}</span>
-          <span class="grade-badge font-mono">⭐ {{ certification.grade }}</span>
+          <span class="period font-mono">
+            <app-icon name="network" [size]="16" color="#FF2E93"></app-icon>
+            Level {{ certification.level }}
+          </span>
+          <span class="grade-badge font-mono">
+            <app-icon name="check" [size]="14" color="#FF2E93"></app-icon>
+            {{ certification.grade }}
+          </span>
         </div>
 
         <p class="edu-desc">
           {{ certification.details }} Certificación del Marco Común Europeo de Referencia para las Lenguas acreditado por WeTalk UPN.
         </p>
+
+        <!-- Official Certificate Image Preview -->
+        <div class="cert-img-container" (click)="openCertModal()">
+          <img src="CertificadoIngles.jpeg" alt="Certificado de Inglés WeTalk UPN" class="cert-img" />
+          <div class="cert-overlay">
+            <app-icon name="externalLink" [size]="20" color="#FFFFFF"></app-icon>
+            <span class="font-mono">Ver Certificado Completo</span>
+          </div>
+        </div>
       </div>
 
     </div>
 
   </div>
 </section>
+
+<!-- Certificate Image Enlarge Modal -->
+@if (certModalOpen()) {
+  <div class="cert-modal-overlay" (click)="closeCertModal()">
+    <div class="cert-modal-content glass-card" (click)="$event.stopPropagation()">
+      <button (click)="closeCertModal()" class="close-btn" aria-label="Cerrar modal">
+        <app-icon name="close" [size]="20" color="#FFFFFF"></app-icon>
+      </button>
+      <img src="CertificadoIngles.jpeg" alt="Certificado de Inglés WeTalk UPN Completo" class="full-cert-img" />
+    </div>
+  </div>
+}
