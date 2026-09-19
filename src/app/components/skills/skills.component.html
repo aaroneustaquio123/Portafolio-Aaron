@@ -38,7 +38,11 @@
             @for (skill of catGroup.skills; track skill.name) {
               <div class="skill-item-card" [style.--skill-color]="skill.color || '#00F2FE'">
                 <div class="icon-container">
-                  <app-icon [name]="skill.icon" [size]="28" [color]="skill.color"></app-icon>
+                  @if (skill.image) {
+                    <img [src]="skill.image" [alt]="skill.name" class="tech-brand-img" />
+                  } @else {
+                    <app-icon [name]="skill.icon" [size]="28" [color]="skill.color"></app-icon>
+                  }
                 </div>
                 <span class="skill-name">{{ skill.name }}</span>
               </div>

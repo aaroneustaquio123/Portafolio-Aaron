@@ -99,6 +99,15 @@
     align-items: center;
     justify-content: center;
     transition: transform var(--transition-bounce);
+
+    .tech-brand-img {
+      max-width: 36px;
+      max-height: 36px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    }
   }
 
   .skill-name {

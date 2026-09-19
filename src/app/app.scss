@@ -5,3 +5,20 @@
   min-height: 100vh;
   position: relative;
 }
+
+#mouse-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(127, 0, 255, 0.06) 40%, transparent 75%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

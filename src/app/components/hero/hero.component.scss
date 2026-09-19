@@ -230,6 +230,13 @@
   z-index: 10;
   transition: transform var(--transition-bounce);
 
+  .badge-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  }
+
   .badge-text {
     font-size: 0.85rem;
     font-weight: 700;

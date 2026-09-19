@@ -13,6 +13,7 @@ export interface ProfileInfo {
 export interface SkillItem {
   name: string;
   icon: string;
+  image?: string;
   level?: string;
   color?: string;
 }
@@ -84,69 +85,69 @@ export class PortfolioService {
     {
       category: 'Lenguajes',
       skills: [
-        { name: 'PHP', icon: 'php', color: '#777BB4' },
-        { name: 'C#', icon: 'csharp', color: '#512BD4' },
-        { name: 'Java', icon: 'java', color: '#ED8B00' },
-        { name: 'JavaScript', icon: 'javascript', color: '#F7DF1E' },
-        { name: 'Python', icon: 'python', color: '#3776AB' },
-        { name: 'HTML5', icon: 'html5', color: '#E34F26' },
-        { name: 'CSS3', icon: 'css3', color: '#1572B6' },
-        { name: 'Kotlin', icon: 'kotlin', color: '#7F52FF' }
+        { name: 'PHP', icon: 'php', image: 'php.png', color: '#777BB4' },
+        { name: 'C#', icon: 'csharp', image: 'C#.png', color: '#512BD4' },
+        { name: 'Java', icon: 'java', image: 'java.png', color: '#ED8B00' },
+        { name: 'JavaScript', icon: 'javascript', image: 'javascript.png', color: '#F7DF1E' },
+        { name: 'Python', icon: 'python', image: 'python.png', color: '#3776AB' },
+        { name: 'HTML5', icon: 'html5', image: 'html5.png', color: '#E34F26' },
+        { name: 'CSS3', icon: 'css3', image: 'css3.png', color: '#1572B6' },
+        { name: 'Kotlin', icon: 'kotlin', image: 'kotlin.png', color: '#7F52FF' }
       ]
     },
     {
       category: 'Frameworks y Librerías',
       skills: [
-        { name: '.NET', icon: 'dotnet', color: '#512BD4' },
-        { name: 'Laravel', icon: 'laravel', color: '#FF2D20' },
-        { name: 'jQuery', icon: 'jquery', color: '#0769AD' },
-        { name: 'Bootstrap', icon: 'bootstrap', color: '#7952B3' },
-        { name: 'Tailwind CSS', icon: 'tailwindcss', color: '#06B6D4' },
-        { name: 'Angular', icon: 'angular', color: '#DD0031' },
-        { name: 'Vue.js', icon: 'vuedotjs', color: '#4FC08D' },
-        { name: 'React', icon: 'react', color: '#61DAFB' },
-        { name: 'React Native', icon: 'react', color: '#61DAFB' },
-        { name: 'Node.js', icon: 'nodedotjs', color: '#5FA04E' },
-        { name: 'Express', icon: 'express', color: '#FFFFFF' }
+        { name: '.NET', icon: 'dotnet', image: '.net.png', color: '#512BD4' },
+        { name: 'Laravel', icon: 'laravel', image: 'laravel.png', color: '#FF2D20' },
+        { name: 'jQuery', icon: 'jquery', image: 'jquery.png', color: '#0769AD' },
+        { name: 'Bootstrap', icon: 'bootstrap', image: 'bootstrap.png', color: '#7952B3' },
+        { name: 'Tailwind CSS', icon: 'tailwindcss', image: 'tailwindcss.png', color: '#06B6D4' },
+        { name: 'Angular', icon: 'angular', image: 'angular.png', color: '#DD0031' },
+        { name: 'Vue.js', icon: 'vuedotjs', image: 'vuejs.png', color: '#4FC08D' },
+        { name: 'React', icon: 'react', image: 'react.png', color: '#61DAFB' },
+        { name: 'React Native', icon: 'react', image: 'react-native.png', color: '#61DAFB' },
+        { name: 'Node.js', icon: 'nodedotjs', image: 'nodejs.png', color: '#5FA04E' },
+        { name: 'Express', icon: 'express', image: 'nodeexpress.png', color: '#FFFFFF' }
       ]
     },
     {
       category: 'CMS y Maquetación Web',
       skills: [
-        { name: 'WordPress', icon: 'wordpress', color: '#21759B' },
-        { name: 'Elementor', icon: 'elementor', color: '#92003B' },
-        { name: 'Divi Builder', icon: 'divi', color: '#8F48ED' }
+        { name: 'WordPress', icon: 'wordpress', image: 'wordpress.png', color: '#21759B' },
+        { name: 'Elementor', icon: 'elementor', image: 'elementor.png', color: '#92003B' },
+        { name: 'Divi Builder', icon: 'divi', image: 'divi-builder.png', color: '#8F48ED' }
       ]
     },
     {
       category: 'Arquitectura y Servicios',
       skills: [
-        { name: 'MVC', icon: 'architecture', color: '#00F2FE' },
-        { name: 'Arquitectura por Capas', icon: 'layers', color: '#4FACFE' },
-        { name: 'APIs REST', icon: 'api', color: '#00E676' },
-        { name: 'APIs SOAP', icon: 'soap', color: '#FFAB00' },
-        { name: 'Postman', icon: 'postman', color: '#FF6C37' }
+        { name: 'MVC', icon: 'architecture', image: 'modelo-vista-controlador.png', color: '#00F2FE' },
+        { name: 'Arquitectura por Capas', icon: 'layers', image: 'modelo-vista-controlador.png', color: '#4FACFE' },
+        { name: 'APIs REST', icon: 'api', image: 'apirest.png', color: '#00E676' },
+        { name: 'APIs SOAP', icon: 'soap', image: 'apisoat.png', color: '#FFAB00' },
+        { name: 'Postman', icon: 'postman', image: 'postman.png', color: '#FF6C37' }
       ]
     },
     {
       category: 'Bases de Datos',
       skills: [
-        { name: 'MySQL', icon: 'mysql', color: '#4479A1' },
-        { name: 'PostgreSQL', icon: 'postgresql', color: '#4169E1' },
-        { name: 'SQL Server', icon: 'sql', color: '#CC292B' }
+        { name: 'MySQL', icon: 'mysql', image: 'base-de-datos-mysql.png', color: '#4479A1' },
+        { name: 'PostgreSQL', icon: 'postgresql', image: 'postgre.png', color: '#4169E1' },
+        { name: 'SQL Server', icon: 'sql', image: 'sqlserver.png', color: '#CC292B' }
       ]
     },
     {
       category: 'Control de Versiones',
       skills: [
-        { name: 'Git', icon: 'git', color: '#F05032' }
+        { name: 'Git', icon: 'git', image: 'git.png', color: '#F05032' }
       ]
     },
     {
       category: 'Desarrollo Móvil',
       skills: [
-        { name: 'Android Studio', icon: 'androidstudio', color: '#3DDC84' },
-        { name: 'Kotlin', icon: 'kotlin', color: '#7F52FF' }
+        { name: 'Android Studio', icon: 'androidstudio', image: 'kotlin.png', color: '#3DDC84' },
+        { name: 'Kotlin', icon: 'kotlin', image: 'kotlin.png', color: '#7F52FF' }
       ]
     },
     {
@@ -171,7 +172,7 @@ export class PortfolioService {
     {
       category: 'Herramientas y Redes',
       skills: [
-        { name: 'Postman', icon: 'postman', color: '#FF6C37' },
+        { name: 'Postman', icon: 'postman', image: 'postman.png', color: '#FF6C37' },
         { name: 'AutoCAD', icon: 'autocad', color: '#E51000' },
         { name: 'Microsoft Office', icon: 'microsoft', color: '#D83B01' },
         { name: 'Redes (TCP/IP)', icon: 'network', color: '#00F2FE' },
