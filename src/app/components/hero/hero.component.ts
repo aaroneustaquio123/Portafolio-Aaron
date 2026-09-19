@@ -15,6 +15,9 @@ export class HeroComponent implements AfterViewInit {
   portfolioService = inject(PortfolioService);
   profile = this.portfolioService.profile;
 
+  private isTouchDevice = false;
+  private ticking = false;
+
   @ViewChild('heroSection') heroSection!: ElementRef<HTMLElement>;
   @ViewChild('heroBadge') heroBadge!: ElementRef<HTMLElement>;
   @ViewChild('heroTitle') heroTitle!: ElementRef<HTMLElement>;
@@ -25,6 +28,7 @@ export class HeroComponent implements AfterViewInit {
   @ViewChild('heroGraphic') heroGraphic!: ElementRef<HTMLElement>;
 
   ngAfterViewInit(): void {
+    this.isTouchDevice = !window.matchMedia('(pointer: fine)').matches;
     this.initHeroEntranceTimeline();
   }
 
@@ -32,78 +36,85 @@ export class HeroComponent implements AfterViewInit {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
     tl.fromTo(this.heroBadge.nativeElement, 
-      { opacity: 0, y: -20, scale: 0.9 }, 
-      { opacity: 1, y: 0, scale: 1, duration: 0.6 }
+      { opacity: 0, y: -15, scale: 0.95 }, 
+      { opacity: 1, y: 0, scale: 1, duration: 0.5 }
     )
     .fromTo(this.heroTitle.nativeElement, 
-      { opacity: 0, y: 30 }, 
-      { opacity: 1, y: 0, duration: 0.8 }, 
-      '-=0.3'
-    )
-    .fromTo(this.heroRoles.nativeElement.children, 
-      { opacity: 0, x: -20 }, 
-      { opacity: 1, x: 0, stagger: 0.15, duration: 0.5 }, 
-      '-=0.4'
-    )
-    .fromTo(this.heroSummary.nativeElement, 
       { opacity: 0, y: 20 }, 
       { opacity: 1, y: 0, duration: 0.6 }, 
+      '-=0.2'
+    )
+    .fromTo(this.heroRoles.nativeElement.children, 
+      { opacity: 0, x: -15 }, 
+      { opacity: 1, x: 0, stagger: 0.1, duration: 0.4 }, 
       '-=0.3'
+    )
+    .fromTo(this.heroSummary.nativeElement, 
+      { opacity: 0, y: 15 }, 
+      { opacity: 1, y: 0, duration: 0.5 }, 
+      '-=0.2'
     )
     .fromTo(this.heroCtas.nativeElement.children, 
-      { opacity: 0, y: 20, scale: 0.95 }, 
-      { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 0.5 }, 
-      '-=0.3'
+      { opacity: 0, y: 15, scale: 0.95 }, 
+      { opacity: 1, y: 0, scale: 1, stagger: 0.1, duration: 0.4 }, 
+      '-=0.2'
     )
     .fromTo(this.heroGraphic.nativeElement, 
-      { opacity: 0, scale: 0.8, rotate: -5 }, 
-      { opacity: 1, scale: 1, rotate: 0, duration: 1 }, 
-      '-=0.8'
+      { opacity: 0, scale: 0.9 }, 
+      { opacity: 1, scale: 1, duration: 0.7 }, 
+      '-=0.6'
     )
     .fromTo(this.heroStats.nativeElement.children, 
-      { opacity: 0, y: 30 }, 
-      { opacity: 1, y: 0, stagger: 0.15, duration: 0.6 }, 
-      '-=0.5'
+      { opacity: 0, y: 20 }, 
+      { opacity: 1, y: 0, stagger: 0.1, duration: 0.5 }, 
+      '-=0.4'
     );
   }
 
   onMouseMove(e: MouseEvent): void {
-    if (!this.heroGraphic?.nativeElement) return;
+    if (this.isTouchDevice || !this.heroGraphic?.nativeElement) return;
     
-    const rect = this.heroSection.nativeElement.getBoundingClientRect();
-    const xPos = (e.clientX - rect.left) / rect.width - 0.5;
-    const yPos = (e.clientY - rect.top) / rect.height - 0.5;
+    if (!this.ticking) {
+      window.requestAnimationFrame(() => {
+        const rect = this.heroSection.nativeElement.getBoundingClientRect();
+        const xPos = (e.clientX - rect.left) / rect.width - 0.5;
+        const yPos = (e.clientY - rect.top) / rect.height - 0.5;
 
-    // Real-time 3D Tilt animation on mouse movement
-    gsap.to(this.heroGraphic.nativeElement, {
-      duration: 0.5,
-      rotateY: xPos * 14,
-      rotateX: -yPos * 14,
-      ease: 'power1.out',
-      transformPerspective: 1000
-    });
+        gsap.to(this.heroGraphic.nativeElement, {
+          duration: 0.4,
+          rotateY: xPos * 10,
+          rotateX: -yPos * 10,
+          ease: 'power1.out',
+          transformPerspective: 1000,
+          overwrite: 'auto'
+        });
 
-    // Real-time subtle shift on floating badges
-    gsap.to('.floating-badge', {
-      duration: 0.4,
-      x: xPos * 25,
-      y: yPos * 25,
-      ease: 'power1.out'
-    });
+        gsap.to('.floating-badge', {
+          duration: 0.4,
+          x: xPos * 15,
+          y: yPos * 15,
+          ease: 'power1.out',
+          overwrite: 'auto'
+        });
+
+        this.ticking = false;
+      });
+      this.ticking = true;
+    }
   }
 
   onMouseLeave(): void {
-    if (!this.heroGraphic?.nativeElement) return;
+    if (this.isTouchDevice || !this.heroGraphic?.nativeElement) return;
 
     gsap.to(this.heroGraphic.nativeElement, {
-      duration: 0.8,
+      duration: 0.6,
       rotateY: 0,
       rotateX: 0,
       ease: 'power2.out'
     });
 
     gsap.to('.floating-badge', {
-      duration: 0.8,
+      duration: 0.6,
       x: 0,
       y: 0,
       ease: 'power2.out'

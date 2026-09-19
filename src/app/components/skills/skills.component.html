@@ -39,7 +39,7 @@
               <div class="skill-item-card" [style.--skill-color]="skill.color || '#00F2FE'">
                 <div class="icon-container">
                   @if (skill.image) {
-                    <img [src]="skill.image" [alt]="skill.name" class="tech-brand-img" />
+                    <img [src]="skill.image" [alt]="skill.name" class="tech-brand-img" loading="lazy" decoding="async" width="36" height="36" />
                   } @else {
                     <app-icon [name]="skill.icon" [size]="28" [color]="skill.color"></app-icon>
                   }
