@@ -86,7 +86,7 @@ export class PortfolioService {
       category: 'Lenguajes',
       skills: [
         { name: 'PHP', icon: 'php', image: 'php.png', color: '#777BB4' },
-        { name: 'C#', icon: 'csharp', image: 'C#.png', color: '#512BD4' },
+        { name: 'C#', icon: 'csharp', image: 'csharp.png', color: '#512BD4' },
         { name: 'Java', icon: 'java', image: 'java.png', color: '#ED8B00' },
         { name: 'JavaScript', icon: 'javascript', image: 'javascript.png', color: '#F7DF1E' },
         { name: 'Python', icon: 'python', image: 'python.png', color: '#3776AB' },
@@ -98,7 +98,7 @@ export class PortfolioService {
     {
       category: 'Frameworks y Librerías',
       skills: [
-        { name: '.NET', icon: 'dotnet', image: '.net.png', color: '#512BD4' },
+        { name: '.NET', icon: 'dotnet', image: 'dotnet.png', color: '#512BD4' },
         { name: 'Laravel', icon: 'laravel', image: 'laravel.png', color: '#FF2D20' },
         { name: 'jQuery', icon: 'jquery', image: 'jquery.png', color: '#0769AD' },
         { name: 'Bootstrap', icon: 'bootstrap', image: 'bootstrap.png', color: '#7952B3' },

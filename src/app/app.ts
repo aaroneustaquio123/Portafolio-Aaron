@@ -9,7 +9,6 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
-import gsap from 'gsap';
 
 @Component({
   selector: 'app-root',
@@ -33,9 +32,7 @@ export class App implements AfterViewInit {
   title = 'Abel Aaron Orejon Eustaquio - Portafolio';
 
   ngAfterViewInit(): void {
-    // Only enable heavy mouse tilt and spotlight on desktop devices with fine pointers
     if (window.matchMedia('(pointer: fine)').matches) {
-      this.initGlobalInteractiveTilt();
       this.initSpotlightTracker();
     } else {
       const spotlight = document.getElementById('mouse-spotlight');
@@ -47,58 +44,14 @@ export class App implements AfterViewInit {
     const spotlight = document.getElementById('mouse-spotlight');
     if (!spotlight) return;
 
-    const xTo = gsap.quickTo(spotlight, 'x', { duration: 0.3, ease: 'power2.out' });
-    const yTo = gsap.quickTo(spotlight, 'y', { duration: 0.3, ease: 'power2.out' });
-
-    window.addEventListener('mousemove', (e: MouseEvent) => {
-      xTo(e.clientX);
-      yTo(e.clientY);
-    }, { passive: true });
-  }
-
-  private initGlobalInteractiveTilt(): void {
     let ticking = false;
-
     window.addEventListener('mousemove', (e: MouseEvent) => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const target = e.target as HTMLElement;
-          const card = target?.closest('.project-card, .skill-item-card, .contact-box') as HTMLElement;
-
-          if (card) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            const tiltX = (y / (rect.height / 2)) * -5;
-            const tiltY = (x / (rect.width / 2)) * 5;
-
-            gsap.to(card, {
-              rotateX: tiltX,
-              rotateY: tiltY,
-              transformPerspective: 1000,
-              duration: 0.25,
-              ease: 'power1.out',
-              overwrite: 'auto'
-            });
-          }
+          spotlight.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
           ticking = false;
         });
         ticking = true;
-      }
-    }, { passive: true });
-
-    window.addEventListener('mouseout', (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const card = target?.closest('.project-card, .skill-item-card, .contact-box') as HTMLElement;
-
-      if (card) {
-        gsap.to(card, {
-          rotateX: 0,
-          rotateY: 0,
-          duration: 0.5,
-          ease: 'power2.out'
-        });
       }
     }, { passive: true });
   }
