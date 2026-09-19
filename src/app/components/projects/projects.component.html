@@ -1,0 +1,172 @@
+<section id="proyectos" #projectsSection class="section-padding projects-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-subtitle">Portafolio Destacado</span>
+      <h2 class="section-title">Proyectos Reales & Soluciones</h2>
+      <p class="section-desc">
+        Sistemas web empresariales, plataformas de inventario y sitios institucionales producidos para clientes.
+      </p>
+    </div>
+
+    <!-- Projects Grid Showcase -->
+    <div class="projects-grid">
+      @for (proj of projects; track proj.id) {
+        <div 
+          (click)="openProjectModal(proj, $event)"
+          class="project-card glass-card">
+          
+          <!-- Project Card Header Banner -->
+          <div class="card-banner" [style.background]="proj.gradient">
+            <div class="banner-badge font-mono">PROYECTO EN PRODUCCIÓN</div>
+            
+            <div class="banner-icon-group">
+              <div class="browser-mockup">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="url-text font-mono">{{ proj.displayUrl }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="card-body">
+            <h3 class="proj-title">{{ proj.title }}</h3>
+            <span class="proj-subtitle font-mono text-gradient">{{ proj.subtitle }}</span>
+
+            <!-- First description bullet -->
+            <p class="proj-desc-preview">
+              {{ proj.description[0] }}
+            </p>
+
+            <!-- Tech Tags -->
+            <div class="proj-tags">
+              @for (tag of proj.tags; track tag) {
+                <span class="badge-tag">{{ tag }}</span>
+              }
+            </div>
+
+            <!-- Card Actions Bar -->
+            <div class="card-footer-bar">
+              <a 
+                [href]="proj.url" 
+                target="_blank" 
+                rel="noopener" 
+                class="btn btn-outline live-link-btn" 
+                title="Visitar sitio oficial">
+                <span>Visitar {{ proj.displayUrl }}</span>
+                <app-icon name="externalLink" [size]="16"></app-icon>
+              </a>
+
+              <button class="btn btn-secondary details-btn">
+                <span>Ver Detalles</span>
+                <span class="arrow font-mono">→</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
+
+<!-- INTERACTIVE GSAP / ANGULAR PROJECT DETAILS MODAL -->
+@if (selectedProject()) {
+  <div class="modal-overlay" [@modalOverlay] (click)="closeModal()">
+    <div class="modal-container glass-card" [@modalContent] (click)="$event.stopPropagation()">
+      
+      <!-- Modal Close Button -->
+      <button (click)="closeModal()" class="modal-close-btn" aria-label="Cerrar modal">
+        <app-icon name="close" [size]="20"></app-icon>
+      </button>
+
+      <!-- Modal Header Banner -->
+      <div class="modal-header-banner" [style.background]="selectedProject()!.gradient">
+        <span class="modal-badge font-mono">CASO DE ESTUDIO DETALLADO</span>
+        <h2 class="modal-title">{{ selectedProject()!.title }}</h2>
+        <span class="modal-subtitle font-mono">{{ selectedProject()!.subtitle }}</span>
+      </div>
+
+      <!-- Modal Main Body -->
+      <div class="modal-body">
+        
+        <div class="modal-meta-row">
+          @if (selectedProject()!.architecture) {
+            <div class="meta-box">
+              <span class="meta-label font-mono">ARQUITECTURA</span>
+              <span class="meta-val">{{ selectedProject()!.architecture }}</span>
+            </div>
+          }
+
+          @if (selectedProject()!.role) {
+            <div class="meta-box">
+              <span class="meta-label font-mono">ROL EN EL PROYECTO</span>
+              <span class="meta-val text-gradient">{{ selectedProject()!.role }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- Detailed Description List -->
+        <div class="modal-section-block">
+          <h4 class="block-title font-mono text-gradient">// Descripción del Trabajo</h4>
+          <ul class="modal-desc-list">
+            @for (descPoint of selectedProject()!.description; track descPoint) {
+              <li>
+                <span class="check-icon">✓</span>
+                <span>{{ descPoint }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <!-- Key Features List -->
+        @if (selectedProject()!.features) {
+          <div class="modal-section-block">
+            <h4 class="block-title font-mono text-gradient">// Funcionalidades Clave</h4>
+            <div class="features-grid">
+              @for (feat of selectedProject()!.features; track feat) {
+                <div class="feature-chip">
+                  <span class="bullet">⚡</span>
+                  <span>{{ feat }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Tech Stack Tags -->
+        <div class="modal-section-block">
+          <h4 class="block-title font-mono text-gradient">// Stack Tecnológico</h4>
+          <div class="modal-tags">
+            @for (tag of selectedProject()!.tags; track tag) {
+              <span class="badge-tag">{{ tag }}</span>
+            }
+          </div>
+        </div>
+
+        <!-- Modal Footer Buttons -->
+        <div class="modal-footer-actions">
+          <a 
+            [href]="selectedProject()!.url" 
+            target="_blank" 
+            rel="noopener" 
+            class="btn btn-primary">
+            <span>Visitar Sitio Oficial ({{ selectedProject()!.displayUrl }})</span>
+            <app-icon name="externalLink" [size]="18"></app-icon>
+          </a>
+
+          <button (click)="closeModal()" class="btn btn-secondary">
+            <span>Cerrar Detalles</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+}

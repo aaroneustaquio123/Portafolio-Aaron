@@ -1,0 +1,74 @@
+<header class="navbar-wrapper" [class.scrolled]="isScrolled()">
+  <div class="container navbar-inner">
+    
+    <!-- Brand Logo / Monogram -->
+    <a (click)="scrollToSection('inicio')" class="brand-logo" title="Abel Orejón">
+      <div class="logo-box">
+        <span class="logo-initials">AO</span>
+      </div>
+      <div class="brand-text">
+        <span class="name">Abel Orejón</span>
+        <span class="role font-mono">Full Stack Dev</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="desktop-nav">
+      <ul class="nav-links">
+        @for (item of navItems; track item.id) {
+          <li>
+            <a 
+              (click)="scrollToSection(item.id)" 
+              [class.active]="activeSection() === item.id"
+              class="nav-link">
+              <span class="hash font-mono">#</span>{{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Header Action Button -->
+    <div class="header-action">
+      <button (click)="scrollToSection('contacto')" class="btn btn-outline nav-btn">
+        <app-icon name="email" [size]="16"></app-icon>
+        <span>Contáctame</span>
+      </button>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button 
+        (click)="toggleMobileMenu()" 
+        class="mobile-toggle"
+        [class.open]="mobileMenuOpen()"
+        aria-label="Abrir menú de navegación">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-dropdown" [@mobileMenu]="mobileMenuOpen() ? 'open' : 'closed'">
+    <div class="container mobile-dropdown-inner">
+      <ul class="mobile-nav-links">
+        @for (item of navItems; track item.id) {
+          <li>
+            <a 
+              (click)="scrollToSection(item.id)" 
+              [class.active]="activeSection() === item.id"
+              class="mobile-nav-link">
+              <span class="hash font-mono">#</span>{{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+      <div class="mobile-cta-box">
+        <button (click)="scrollToSection('contacto')" class="btn btn-primary w-full">
+          <app-icon name="email" [size]="18"></app-icon>
+          <span>Hablemos por Email</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

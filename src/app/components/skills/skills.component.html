@@ -1,0 +1,53 @@
+<section id="habilidades" #skillsSection class="section-padding skills-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-subtitle">Stack Tecnológico</span>
+      <h2 class="section-title">Habilidades & Herramientas</h2>
+      <p class="section-desc">
+        Tecnologías, lenguajes, frameworks y herramientas que domino con SVG logos reales.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="category-tabs">
+      @for (cat of categoryList; track cat) {
+        <button 
+          (click)="selectCategory(cat)"
+          [class.active]="selectedCategory() === cat"
+          class="tab-btn font-mono">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Grouped Skill Grid -->
+    <div #skillsGrid class="skills-grid">
+      @for (catGroup of filteredCategories; track catGroup.category) {
+        <div class="skill-category-card glass-card">
+          
+          <div class="category-header">
+            <span class="category-title font-mono text-gradient">
+              // {{ catGroup.category }}
+            </span>
+            <span class="skill-count font-mono">{{ catGroup.skills.length }} tech</span>
+          </div>
+
+          <div class="skill-items-grid">
+            @for (skill of catGroup.skills; track skill.name) {
+              <div class="skill-item-card" [style.--skill-color]="skill.color || '#00F2FE'">
+                <div class="icon-container">
+                  <app-icon [name]="skill.icon" [size]="28" [color]="skill.color"></app-icon>
+                </div>
+                <span class="skill-name">{{ skill.name }}</span>
+              </div>
+            }
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,61 @@
+<section id="educacion" #eduSection class="section-padding education-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-subtitle">Formación Académica</span>
+      <h2 class="section-title">Educación & Certificaciones</h2>
+      <p class="section-desc">
+        Grado universitario en Ingeniería de Sistemas y acreditaciones idiomáticas oficiales.
+      </p>
+    </div>
+
+    <div class="edu-grid">
+      
+      <!-- Academic Degree Card -->
+      <div class="edu-card glass-card">
+        <div class="card-badge font-mono">GRADO UNIVERSITARIO</div>
+        
+        <div class="card-icon-box">
+          <app-icon name="training" [size]="32" color="#00F2FE"></app-icon>
+        </div>
+
+        <h3 class="edu-title">{{ education.degree }}</h3>
+        <span class="institution-name font-mono text-gradient">{{ education.institution }}</span>
+        
+        <div class="meta-row">
+          <span class="period font-mono">📅 {{ education.period }}</span>
+          <span class="status-badge font-mono">🎓 {{ education.status }}</span>
+        </div>
+
+        <p class="edu-desc">
+          Formación completa en arquitectura de software, ingeniería de requerimientos, 
+          redes computacionales, bases de datos relacionales y gestión estratégica de tecnologías de la información.
+        </p>
+      </div>
+
+      <!-- Language Certification Card -->
+      <div class="edu-card glass-card">
+        <div class="card-badge font-mono">CERTIFICACIÓN IDIOMA</div>
+
+        <div class="card-icon-box">
+          <app-icon name="language" [size]="32" color="#FF2E93"></app-icon>
+        </div>
+
+        <h3 class="edu-title">{{ certification.title }}</h3>
+        <span class="institution-name font-mono text-accent-gradient">{{ certification.institution }}</span>
+
+        <div class="meta-row">
+          <span class="period font-mono">🌍 Level {{ certification.level }}</span>
+          <span class="grade-badge font-mono">⭐ {{ certification.grade }}</span>
+        </div>
+
+        <p class="edu-desc">
+          {{ certification.details }} Certificación del Marco Común Europeo de Referencia para las Lenguas acreditado por WeTalk UPN.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>

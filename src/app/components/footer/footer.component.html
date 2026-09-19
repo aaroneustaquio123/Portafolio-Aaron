@@ -1,0 +1,61 @@
+<footer class="footer-wrapper">
+  <div class="container">
+    
+    <div class="footer-top-row">
+      <!-- Brand & Info -->
+      <div class="footer-brand">
+        <a (click)="scrollToTop()" class="brand-logo">
+          <div class="logo-box">
+            <span class="logo-initials font-mono">AO</span>
+          </div>
+          <span class="brand-name">Abel Orejón</span>
+        </a>
+        <p class="brand-desc">
+          Ingeniero de Sistemas Computacionales & Desarrollador Full Stack.
+        </p>
+      </div>
+
+      <!-- Quick Nav Links -->
+      <div class="footer-links">
+        <span class="footer-heading font-mono">Navegación</span>
+        <ul>
+          <li><a (click)="scrollToSection('inicio')">Inicio</a></li>
+          <li><a (click)="scrollToSection('sobre-mi')">Sobre Mí</a></li>
+          <li><a (click)="scrollToSection('habilidades')">Habilidades</a></li>
+          <li><a (click)="scrollToSection('experiencia')">Experiencia</a></li>
+          <li><a (click)="scrollToSection('proyectos')">Proyectos</a></li>
+          <li><a (click)="scrollToSection('contacto')">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Social & Contact -->
+      <div class="footer-social">
+        <span class="footer-heading font-mono">Redes & Contacto</span>
+        <div class="social-btns">
+          <a [href]="profile.linkedin" target="_blank" rel="noopener" class="social-icon-btn" title="LinkedIn">
+            <app-icon name="linkedin" [size]="20"></app-icon>
+          </a>
+          <a [href]="'mailto:' + profile.email" class="social-icon-btn" title="Email">
+            <app-icon name="email" [size]="20"></app-icon>
+          </a>
+          <a [href]="'tel:' + profile.phone.replace(' ', '')" class="social-icon-btn" title="Teléfono">
+            <app-icon name="phone" [size]="20"></app-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Back to top -->
+    <div class="footer-bottom-bar">
+      <p class="copyright-text">
+        © {{ currentYear }} <strong>{{ profile.name }}</strong>. Todos los derechos reservados.
+      </p>
+
+      <button (click)="scrollToTop()" class="back-to-top-btn" title="Volver arriba">
+        <span>Volver Arriba</span>
+        <span class="arrow font-mono">↑</span>
+      </button>
+    </div>
+
+  </div>
+</footer>

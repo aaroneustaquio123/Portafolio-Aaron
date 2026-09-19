@@ -1,0 +1,110 @@
+<section id="sobre-mi" #aboutSection class="section-padding about-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-subtitle">Conóceme Más</span>
+      <h2 class="section-title">Sobre Mí & Trayectoria</h2>
+      <p class="section-desc">
+        Desarrollador enfocado en ingeniería de software, arquitectura MVC/N-Capas y sistemas escalables.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      
+      <!-- Photo Container Placeholder Frame -->
+      <div #photoBox class="photo-col">
+        <div class="photo-frame glass-card">
+          <div class="photo-glow-bg"></div>
+          
+          <!-- Image Placeholder Box -->
+          <div class="photo-placeholder">
+            <div class="avatar-icon-box">
+              <span class="initials font-mono">AO</span>
+            </div>
+            <span class="photo-badge font-mono">ESPACIO RESERVADO FOTO</span>
+            <p class="photo-instructions">
+              Subir imagen en:<br />
+              <code class="font-mono text-gradient">public/assets/images/profile.jpg</code><br />
+              (Dimensión recomendada: <strong>600 x 600 px</strong>)
+            </p>
+          </div>
+
+          <!-- Decorative Floating Corner Badges -->
+          <div class="frame-tag top-left font-mono">UPN Egresado</div>
+          <div class="frame-tag bottom-right font-mono">Lima, Perú 🇵🇪</div>
+        </div>
+      </div>
+
+      <!-- About Text & Key Details -->
+      <div #aboutContent class="content-col">
+        
+        <div class="profile-card glass-card">
+          <h3 class="profile-title text-gradient">
+            Ingeniero de Sistemas Computacionales
+          </h3>
+          <p class="profile-location">
+            <app-icon name="location" [size]="18" color="#00F2FE"></app-icon>
+            <span>{{ profile.location }}</span>
+          </p>
+
+          <div class="summary-box">
+            <p class="summary-text">
+              "{{ profile.summary }}"
+            </p>
+          </div>
+
+          <!-- Highlight Key Capabilities -->
+          <div class="key-highlights">
+            <div class="highlight-item">
+              <div class="icon-circle">
+                <app-icon name="architecture" [size]="20" color="#00F2FE"></app-icon>
+              </div>
+              <div class="highlight-info">
+                <h4>Arquitectura MVC y N-Capas</h4>
+                <p>Estructuración limpia de backend en PHP (Laravel) y C# (.NET).</p>
+              </div>
+            </div>
+
+            <div class="highlight-item">
+              <div class="icon-circle">
+                <app-icon name="mysql" [size]="20" color="#4479A1"></app-icon>
+              </div>
+              <div class="highlight-info">
+                <h4>Bases de Datos Relacionales</h4>
+                <p>Modelado y optimización de consultas en MySQL y PostgreSQL.</p>
+              </div>
+            </div>
+
+            <div class="highlight-item">
+              <div class="icon-circle">
+                <app-icon name="training" [size]="20" color="#00E676"></app-icon>
+              </div>
+              <div class="highlight-info">
+                <h4>Integración & Capacitación</h4>
+                <p>Gestión con Trello/ClickUp y capacitación a usuarios finales.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Contact Actions -->
+          <div class="about-actions">
+            <a [href]="'mailto:' + profile.email" class="btn btn-primary">
+              <app-icon name="email" [size]="18"></app-icon>
+              <span>{{ profile.email }}</span>
+            </a>
+
+            <a [href]="profile.linkedin" target="_blank" rel="noopener" class="btn btn-secondary">
+              <app-icon name="linkedin" [size]="18" color="#0A66C2"></app-icon>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

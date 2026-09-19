@@ -1,0 +1,68 @@
+<section id="experiencia" #expSection class="section-padding experience-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-subtitle">Trayectoria Laboral</span>
+      <h2 class="section-title">Experiencia Profesional</h2>
+      <p class="section-desc">
+        Desarrollo de software Full Stack, gestión de proyectos y diseño técnico en entornos corporativos.
+      </p>
+    </div>
+
+    <!-- Vertical Timeline Wrapper -->
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+
+      @for (exp of experiences; track exp.id; let i = $index) {
+        <div class="timeline-item" [class.even]="i % 2 === 0">
+          
+          <!-- Timeline Node Marker -->
+          <div class="timeline-node">
+            <div class="node-pulse"></div>
+            <app-icon name="project" [size]="18" color="#00F2FE"></app-icon>
+          </div>
+
+          <!-- Experience Glass Card -->
+          <div class="timeline-content glass-card">
+            
+            <div class="card-header">
+              <div class="role-group">
+                <h3 class="role-title text-gradient">{{ exp.role }}</h3>
+                <span class="company-name font-mono">
+                  ⚡ {{ exp.company }}
+                  @if (exp.companyType) {
+                    <span class="company-type">({{ exp.companyType }})</span>
+                  }
+                </span>
+              </div>
+              <span class="period-badge font-mono">
+                {{ exp.period }}
+              </span>
+            </div>
+
+            <!-- Bulleted Responsibilities -->
+            <ul class="responsibilities-list">
+              @for (item of exp.responsibilities; track item) {
+                <li>
+                  <span class="bullet-icon font-mono">▹</span>
+                  <span>{{ item }}</span>
+                </li>
+              }
+            </ul>
+
+            <!-- Tech Badges Used -->
+            <div class="tech-tags">
+              @for (tech of exp.techUsed; track tech) {
+                <span class="badge-tag">{{ tech }}</span>
+              }
+            </div>
+
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

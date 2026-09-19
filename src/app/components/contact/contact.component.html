@@ -1,0 +1,166 @@
+<section id="contacto" #contactSection class="section-padding contact-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-subtitle">Ponte en Contacto</span>
+      <h2 class="section-title">¡Trabajemos Juntos!</h2>
+      <p class="section-desc">
+        ¿Tienes una propuesta laboral, proyecto web o consulta técnica? Escríbeme directamente.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      
+      <!-- Direct Contact Cards Column -->
+      <div class="contact-info-col">
+        
+        <!-- Email Quick Action Card -->
+        <div class="contact-box glass-card">
+          <div class="box-icon">
+            <app-icon name="email" [size]="24" color="#00F2FE"></app-icon>
+          </div>
+          <div class="box-details">
+            <span class="box-label font-mono">CORREO ELECTRÓNICO</span>
+            <a [href]="'mailto:' + profile.email" class="box-val">{{ profile.email }}</a>
+          </div>
+          <button 
+            (click)="copyToClipboard(profile.email, 'email')" 
+            class="btn btn-outline copy-btn"
+            title="Copiar correo">
+            @if (copiedField() === 'email') {
+              <app-icon name="check" [size]="16" color="#00E676"></app-icon>
+              <span class="copied-text">¡Copiado!</span>
+            } @else {
+              <app-icon name="copy" [size]="16"></app-icon>
+              <span>Copiar</span>
+            }
+          </button>
+        </div>
+
+        <!-- Phone Quick Action Card -->
+        <div class="contact-box glass-card">
+          <div class="box-icon">
+            <app-icon name="phone" [size]="24" color="#00E676"></app-icon>
+          </div>
+          <div class="box-details">
+            <span class="box-label font-mono">TELÉFONO / WHATSAPP</span>
+            <a [href]="'tel:' + profile.phone.replace(' ', '')" class="box-val">{{ profile.phone }}</a>
+          </div>
+          <button 
+            (click)="copyToClipboard(profile.phone, 'phone')" 
+            class="btn btn-outline copy-btn"
+            title="Copiar teléfono">
+            @if (copiedField() === 'phone') {
+              <app-icon name="check" [size]="16" color="#00E676"></app-icon>
+              <span class="copied-text">¡Copiado!</span>
+            } @else {
+              <app-icon name="copy" [size]="16"></app-icon>
+              <span>Copiar</span>
+            }
+          </button>
+        </div>
+
+        <!-- LinkedIn Card -->
+        <div class="contact-box glass-card">
+          <div class="box-icon">
+            <app-icon name="linkedin" [size]="24" color="#0A66C2"></app-icon>
+          </div>
+          <div class="box-details">
+            <span class="box-label font-mono">PERFIL PROFESIONAL</span>
+            <span class="box-val">Abel Aarón Orejón Eustaquio</span>
+          </div>
+          <a [href]="profile.linkedin" target="_blank" rel="noopener" class="btn btn-primary direct-btn">
+            <span>Ver LinkedIn</span>
+            <app-icon name="externalLink" [size]="16"></app-icon>
+          </a>
+        </div>
+
+        <!-- Location Badge -->
+        <div class="contact-box glass-card location-box">
+          <div class="box-icon">
+            <app-icon name="location" [size]="24" color="#FF2E93"></app-icon>
+          </div>
+          <div class="box-details">
+            <span class="box-label font-mono">UBICACIÓN</span>
+            <span class="box-val">{{ profile.location }}</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Contact Message Form -->
+      <div class="contact-form-col">
+        <form (ngSubmit)="submitForm()" class="contact-form glass-card">
+          
+          <h3 class="form-title text-gradient">Enviarme un Mensaje</h3>
+
+          @if (formSubmitted()) {
+            <div class="alert-success glass-card">
+              <span class="success-icon">✓</span>
+              <div>
+                <strong>¡Mensaje Enviado con Éxito!</strong>
+                <p>Gracias por contactarme, Abel te responderá a la brevedad posible.</p>
+              </div>
+            </div>
+          }
+
+          <div class="form-group">
+            <label for="name" class="font-mono">Tu Nombre</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              [(ngModel)]="formData.name" 
+              placeholder="Ej. Juan Pérez" 
+              required 
+              class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="font-mono">Tu Correo Electrónico</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="formData.email" 
+              placeholder="ejemplo@empresa.com" 
+              required 
+              class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="font-mono">Asunto</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              [(ngModel)]="formData.subject" 
+              placeholder="Propuesta Laboral / Proyecto Web" 
+              class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="font-mono">Mensaje</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              [(ngModel)]="formData.message" 
+              rows="4" 
+              placeholder="Escribe aquí los detalles de tu consulta..." 
+              required 
+              class="form-input textarea"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn">
+            <app-icon name="email" [size]="18"></app-icon>
+            <span>Enviar Mensaje</span>
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,118 @@
+<section id="inicio" #heroSection class="hero-section">
+  <!-- Glowing Background Parallax Orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      
+      <!-- Greeting Badge -->
+      <div #heroBadge class="hero-badge-wrapper">
+        <span class="badge-tag glow-pulse">
+          <span class="dot"></span>
+          👋 ¡Hola! Soy {{ profile.name }}
+        </span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 #heroTitle class="hero-headline">
+        Construyendo Soluciones <br />
+        <span class="text-gradient">Full Stack & Arquitectura MVC</span>
+      </h1>
+
+      <!-- Roles Pill Chips -->
+      <div #heroRoles class="roles-chips">
+        @for (role of profile.roles; track role) {
+          <div class="role-chip">
+            <span class="chip-icon font-mono">⚡</span>
+            <span>{{ role }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- Concise Hero Summary -->
+      <p #heroSummary class="hero-summary">
+        Ingeniero de Sistemas Computacionales especializado en el desarrollo integral de aplicaciones web, 
+        diseño de bases de datos relacionales (MySQL, PostgreSQL) y arquitectura por capas en PHP (Laravel), C# (.NET) y Angular.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div #heroCtas class="hero-ctas">
+        <button (click)="scrollToSection('proyectos')" class="btn btn-primary">
+          <span>Ver Proyectos</span>
+          <app-icon name="externalLink" [size]="18"></app-icon>
+        </button>
+
+        <button (click)="scrollToSection('contacto')" class="btn btn-secondary">
+          <app-icon name="email" [size]="18"></app-icon>
+          <span>Contáctame</span>
+        </button>
+        
+        <a href="mailto:abelaaronpro@gmail.com" class="btn btn-outline">
+          <app-icon name="download" [size]="18"></app-icon>
+          <span>Escribir Correo</span>
+        </a>
+      </div>
+
+      <!-- Metric Highlights Cards -->
+      <div #heroStats class="hero-stats-grid">
+        <div class="stat-card glass-card">
+          <span class="stat-num text-gradient">3+</span>
+          <span class="stat-label">Años de Experiencia</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-num text-gradient">13+</span>
+          <span class="stat-label">Categorías de Tech</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-num text-gradient">100%</span>
+          <span class="stat-label">Soluciones Escalables</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tech Code Interactive Illustration Box -->
+    <div #heroGraphic class="hero-graphic-col">
+      <div class="terminal-card glass-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-title font-mono">abel_orejon.config.ts</span>
+        </div>
+        <div class="terminal-body font-mono">
+          <p><span class="keyword">const</span> <span class="variable">developer</span> = &#123;</p>
+          <p class="indent"><span class="key">nombre</span>: <span class="string">'Abel Aarón Orejón Eustaquio'</span>,</p>
+          <p class="indent"><span class="key">titulo</span>: <span class="string">'Ingeniero de Sistemas Computacionales'</span>,</p>
+          <p class="indent"><span class="key">ubicacion</span>: <span class="string">'Lima, Perú 🇵🇪'</span>,</p>
+          <p class="indent"><span class="key">stackBackend</span>: [<span class="string">'PHP'</span>, <span class="string">'Laravel'</span>, <span class="string">'C#'</span>, <span class="string">'.NET'</span>, <span class="string">'Node.js'</span>],</p>
+          <p class="indent"><span class="key">stackFrontend</span>: [<span class="string">'Angular'</span>, <span class="string">'JavaScript'</span>, <span class="string">'Tailwind'</span>, <span class="string">'SCSS'</span>],</p>
+          <p class="indent"><span class="key">databases</span>: [<span class="string">'MySQL'</span>, <span class="string">'PostgreSQL'</span>],</p>
+          <p class="indent"><span class="key">estado</span>: <span class="string">'Disponible para proyectos'</span></p>
+          <p>&#125;;</p>
+          <div class="code-cursor"></div>
+        </div>
+
+        <!-- Floating Skill Badges overlay -->
+        <div class="floating-badge badge-php animate-float">
+          <app-icon name="php" [size]="20" color="#777BB4"></app-icon>
+          <span>PHP MVC</span>
+        </div>
+
+        <div class="floating-badge badge-angular animate-float" style="animation-delay: 2s;">
+          <app-icon name="angular" [size]="20" color="#DD0031"></app-icon>
+          <span>Angular</span>
+        </div>
+
+        <div class="floating-badge badge-mysql animate-float" style="animation-delay: 4s;">
+          <app-icon name="mysql" [size]="20" color="#4479A1"></app-icon>
+          <span>MySQL</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
